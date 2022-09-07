@@ -11,20 +11,24 @@ package VolatileKeyword_2;
  * <br>
  * also freely available at
  * <a href="https://www.udemy.com/java-multithreading/?couponCode=FREE">
- *     <em>https://www.udemy.com/java-multithreading/?couponCode=FREE</em>
+ * <em>https://www.udemy.com/java-multithreading/?couponCode=FREE</em>
  * </a>
  *
  * @author Z.B. Celik <celik.berkay@gmail.com>
  */
+
 import java.util.Scanner;
 
 class Processor extends Thread {
 
     private volatile boolean running = true;
+    // volatile make sure that below two thread always read the most latest value in  the RAM
+
 
     public void run() {
         while (running) {
             System.out.println("Running");
+
 
             try {
                 Thread.sleep(50);
