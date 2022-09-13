@@ -34,6 +34,12 @@ public class Worker {
      * this case due to the reason that count is shared between the threads or
      * without join keyword count will output wrong.
      */
+    /*
+    with Syncronised block you dont need volatie on count variable as syschornixed block make sure you will
+    always read the latest value
+     */
+    /*
+     */
     public synchronized void increment(String threadName) throws InterruptedException {
         count++;
         //Thread.sleep(1000);

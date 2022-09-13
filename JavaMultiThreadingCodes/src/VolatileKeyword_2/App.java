@@ -23,6 +23,9 @@ class Processor extends Thread {
 
     private volatile boolean running = true;
     // volatile make sure that below two thread always read the most latest value in  the RAM
+    // Hert two thread main and Proccessor are working on 'running' shared variable
+    // in some system or JVM   line /// while (running) {//  can optimized or chache to thead
+    // will not shutdown to make sure this behaves always correctly use volatile in running variable.
 
 
     public void run() {

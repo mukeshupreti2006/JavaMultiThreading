@@ -4,7 +4,8 @@ import java.util.Scanner;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
-/**
+/**  Reentract Lock is lock which can be accouried multiple time and count has been maintain . you have
+ * unlock untill the count is zero
  * Source:<em>
  * http://www.journaldev.com/2377/java-lock-example-and-concurrency-lock-vs-synchronized</em>
  * <p>
@@ -62,12 +63,12 @@ public class Runner {
     public void firstThread() throws InterruptedException {
         lock.lock();
         System.out.println("Waiting ....");
-        cond.await();
+        cond.await();  /// like wait() method of object
         System.out.println("Woken up!");
         try {
             increment();
         } finally {
-            lock.unlock();
+            lock.unlock();  // should be in final block if  increatment method throgh an runtime exception this lock will not release
         }
     }
 
@@ -77,7 +78,7 @@ public class Runner {
         System.out.println("Press the return key!");
         new Scanner(System.in).nextLine();
         System.out.println("Got return key!");
-        cond.signal();
+        cond.signal(); // like notify
         try {
             increment();
         } finally {
